@@ -1,0 +1,7 @@
+---
+- hosts: tor-relays
+  roles:
+    - role: basics
+      tags: basics
+    - role: tor
+      tags: tor

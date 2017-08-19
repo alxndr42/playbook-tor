@@ -1,0 +1,6 @@
+[submodule "roles/tor"]
+	path = roles/tor
+	url = https://github.com/7adietri/ansible-tor
+[submodule "roles/basics"]
+	path = roles/basics
+	url = https://github.com/7adietri/ansible-basics

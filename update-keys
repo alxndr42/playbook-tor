@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+  echo "Usage: update-keys <base_directory> [ansible_options]"
+  echo ""
+  echo "Updates all keys found under base_directory older than 14 days,"
+  echo "using a signing key lifetime of 35 days, and copies them to the"
+  echo "instances using Ansible."
+  exit 1
+fi
+
+BASE="$1"
+shift
+
+certs=$(find "$BASE" -name ed25519_signing_cert -mtime +14)
+if [ -n "$certs" ]; then
+  echo "##### Updating keys"
+  for cert in $certs; do
+    datadir=$(dirname $(dirname $cert))
+    echo "### Updating $datadir"
+    tor --datadirectory "$datadir" --signingkeylifetime "35 days" --keygen
+  done
+fi
+
+echo "##### Copying keys"
+ansible-playbook site.yml -t copy-offline-keys $*
