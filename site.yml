@@ -1,6 +1,5 @@
 ---
-# PLEASE NOTE: '-' is an invalid character in group names
-- hosts: tor_relays tor-relays
+- hosts: tor_relays
   roles:
     - role: basics
       tags: basics
