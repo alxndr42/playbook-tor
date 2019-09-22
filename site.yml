@@ -3,5 +3,13 @@
   roles:
     - role: basics
       tags: basics
+
+- hosts: tor_exits
+  roles:
+    - role: unbound
+      tags: unbound
+
+- hosts: tor_relays
+  roles:
     - role: tor
       tags: tor

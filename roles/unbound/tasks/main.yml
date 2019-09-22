@@ -1,0 +1,20 @@
+---
+- name: install packages
+  apt:
+    name:
+      - unbound
+
+- name: copy static configuration
+  copy:
+    src: "{{ item }}"
+    dest: /etc/unbound/unbound.conf.d/
+  with_items:
+    - control-enable.conf
+    - extended-statistics.conf
+  notify: restart unbound
+
+- name: template performance.conf
+  template:
+    src: performance.conf
+    dest: /etc/unbound/unbound.conf.d/
+  notify: restart unbound
