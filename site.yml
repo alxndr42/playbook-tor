@@ -4,7 +4,7 @@
     - role: basics
       tags: basics
 
-- hosts: tor_exits
+- hosts: tor_unbound
   roles:
     - role: unbound
       tags: unbound
@@ -13,3 +13,8 @@
   roles:
     - role: tor
       tags: tor
+
+- hosts: tor_prometheus
+  roles:
+    - role: prometheus
+      tags: prometheus

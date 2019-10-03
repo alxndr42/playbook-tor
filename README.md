@@ -1,5 +1,4 @@
-playbook-tor
-============
+# playbook-tor
 
 Ansible playbook for managing Tor relays on Debian-based systems.
 
@@ -11,8 +10,7 @@ Please see the role READMEs for requirements and variables:
 The script [update-keys](update-keys) can be used to update and
 copy the offline keys.
 
-Inventory Example
------------------
+## Inventory Example
 
 A minimal set of variables for a middle relay:
 
@@ -26,7 +24,26 @@ A minimal set of variables for a middle relay:
           - 443
           - "[abcd::1:2:3:4]:443"
 
-License
--------
+## Unbound
+
+Hosts in the group `tor_unbound` are configured with a basic [Unbound](https://nlnetlabs.nl/documentation/unbound/)
+setup. To use it in Tor, add this to the host configuration:
+
+    tor_nameservers: ["127.0.0.1"]
+
+## Prometheus
+
+Hosts in the group `tor_prometheus` are configured with a Prometheus [node_exporter](https://github.com/prometheus/node_exporter)
+running on `localhost:9100`. To expose it as a hidden service, add this to the
+host configuration:
+
+    tor_default_hidden_services:
+      - name: prometheus
+        ports: [9100]
+
+See the [tor](https://github.com/7adietri/ansible-tor) role for information on
+client authorization.
+
+## License
 
 GPLv3
