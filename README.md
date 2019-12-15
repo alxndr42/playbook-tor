@@ -44,6 +44,11 @@ host configuration:
 See the [tor](https://github.com/7adietri/ansible-tor) role for information on
 client authorization.
 
+## Snowflake Proxy
+
+Hosts in the group `tor_snowflake` are configured as [Snowflake](https://snowflake.torproject.org/)
+proxies, using the Go binary.
+
 ## License
 
 GPLv3

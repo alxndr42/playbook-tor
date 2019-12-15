@@ -1,0 +1,45 @@
+---
+- name: install required packages
+  apt:
+    name: golang
+    cache_valid_time: 86400
+
+- name: clone snowflake
+  git:
+    repo: "https://git.torproject.org/pluggable-transports/snowflake.git"
+    dest: "{{ snowflake_path }}"
+    version: "{{ snowflake_commit }}"
+  register: git
+
+- name: get dependencies
+  command: go get -d
+  args:
+    chdir: "{{ snowflake_path }}/proxy-go"
+  when: git.changed
+
+- name: build snowflake
+  command: go build
+  args:
+    chdir: "{{ snowflake_path }}/proxy-go"
+  when: git.changed
+
+- name: copy snowflake
+  copy:
+    src: "{{ snowflake_path }}/proxy-go/proxy-go"
+    dest: /usr/local/bin/snowflake
+    remote_src: yes
+    mode: 0755
+  when: git.changed
+  notify: restart snowflake
+
+- name: template snowflake.service
+  template:
+    src: snowflake.service
+    dest: /lib/systemd/system
+  notify: restart snowflake
+
+- name: enable snowflake service
+  systemd:
+    name: snowflake
+    enabled: yes
+    daemon_reload: yes

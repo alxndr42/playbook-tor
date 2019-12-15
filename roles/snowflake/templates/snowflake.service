@@ -1,0 +1,14 @@
+[Unit]
+Description=Snowflake Proxy for Tor
+After=network.target
+
+[Service]
+User=nobody
+Group=nogroup
+WorkingDirectory=/tmp
+ExecStart=/usr/local/bin/snowflake
+Restart=always
+RestartSec=60
+
+[Install]
+WantedBy=multi-user.target

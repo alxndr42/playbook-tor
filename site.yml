@@ -18,3 +18,12 @@
   roles:
     - role: prometheus
       tags: prometheus
+
+- hosts: tor_snowflake
+  roles:
+    - role: basics
+      tags: basics
+    - role: tor
+      tags: tor
+    - role: snowflake
+      tags: snowflake
