@@ -23,7 +23,7 @@
 - name: template prometheus-node-exporter.service
   template:
     src: prometheus-node-exporter.service
-    dest: /etc/systemd/system/
+    dest: /lib/systemd/system/
   notify: restart prometheus-node-exporter
 
 - name: enable prometheus-node-exporter service
