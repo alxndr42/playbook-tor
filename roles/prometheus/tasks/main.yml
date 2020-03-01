@@ -9,7 +9,7 @@
     url: "{{ node_exporter_url }}"
     dest: "{{ node_exporter_path }}/node_exporter.tgz"
     checksum: "sha256:{{ node_exporter_sha256 }}"
-  register: archive
+  register: node_exporter
 
 - name: extract node_exporter
   unarchive:
@@ -17,7 +17,7 @@
     dest: "{{ node_exporter_path }}"
     extra_opts: "--strip-components=1"
     remote_src: yes
-  when: archive.changed
+  when: node_exporter.changed
   notify: restart prometheus-node-exporter
 
 - name: template prometheus-node-exporter.service
@@ -31,3 +31,35 @@
     name: prometheus-node-exporter
     enabled: yes
     daemon_reload: yes
+
+- name: download tor_exporter
+  get_url:
+    url: "{{ tor_exporter_url }}"
+    dest: /opt/tor_exporter.deb
+    checksum: "sha256:{{ tor_exporter_sha256 }}"
+  register: tor_exporter
+
+- name: install tor_exporter
+  apt:
+    deb: /opt/tor_exporter.deb
+  when: tor_exporter.changed
+
+- name: disable standard prometheus-tor-exporter service
+  systemd:
+    name: prometheus-tor-exporter
+    state: stopped
+    enabled: no
+
+- name: template prometheus-tor-exporter services
+  template:
+    src: prometheus-tor-exporter.service
+    dest: /lib/systemd/system/prometheus-tor-exporter-{{ item.name }}.service
+  loop: "{{ tor_exporter_instances }}"
+
+- name: enable prometheus-tor-exporter services
+  systemd:
+    name: prometheus-tor-exporter-{{ item.name }}
+    state: started
+    enabled: yes
+    daemon_reload: yes
+  loop: "{{ tor_exporter_instances }}"
