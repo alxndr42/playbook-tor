@@ -8,7 +8,7 @@ ExecStart={{ node_exporter_path }}/node_exporter \
     --collector.systemd \
     --web.listen-address="localhost:9100"
 Restart=always
-RestartSec=60
+RestartSec=10
 
 [Install]
 WantedBy=multi-user.target

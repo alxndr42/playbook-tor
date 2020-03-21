@@ -9,7 +9,8 @@ ExecStart=/usr/bin/prometheus-tor-exporter.py -b {{ item.bind_addr|default("loca
 ExecStart=/usr/bin/prometheus-tor-exporter.py -b {{ item.bind_addr|default("localhost") }} -p {{ item.bind_port|default(9101) }} -a {{ item.control_addr|default("localhost") }} -c {{ item.control_port|default(9051) }}
 {% endif %}
 User={{ item.user }}
-Restart=on-failure
+Restart=always
+RestartSec=10
 
 [Install]
 WantedBy=multi-user.target
