@@ -3,3 +3,8 @@
   service:
     name: unbound
     state: restarted
+
+- name: restart exporter
+  service:
+    name: prometheus-unbound-exporter
+    state: restarted

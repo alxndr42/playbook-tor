@@ -2,3 +2,8 @@ unbound_num_threads: 2
 unbound_cache_slabs: 2
 unbound_msg_cache: 256m
 unbound_rrset_cache: 512m
+# unbound exporter settings
+unbound_etc: /etc/unbound
+unbound_exporter_repo: https://github.com/kumina/unbound_exporter.git
+unbound_exporter_commit: 1739a339d3404a4164a5664dc38e328108c6a2a6
+unbound_exporter_path: /opt/unbound_exporter

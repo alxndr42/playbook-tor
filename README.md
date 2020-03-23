@@ -32,6 +32,9 @@ To use it in Tor, add this to the host configuration:
 
     tor_nameservers: ["127.0.0.1"]
 
+If the variable `unbound_exporter_address` is set (i.e. `localhost:9102`), a
+Prometheus Unbound exporter is installed.
+
 ## Prometheus
 
 Hosts in the group `tor_prometheus` are configured with a [node_exporter][] on
