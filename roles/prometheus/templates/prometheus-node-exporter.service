@@ -6,7 +6,10 @@ After=syslog.target network.target
 WorkingDirectory={{ node_exporter_path }}
 ExecStart={{ node_exporter_path }}/node_exporter \
     --collector.systemd \
-    --web.listen-address="localhost:9100"
+{% for o in node_exporter_options %}
+    {{ o }} \
+{% endfor %}
+    --web.listen-address="{{ node_exporter_address }}"
 Restart=always
 RestartSec=10
 
