@@ -14,18 +14,18 @@
 - name: get dependencies
   command: go get -d
   args:
-    chdir: "{{ snowflake_path }}/proxy-go"
+    chdir: "{{ snowflake_path }}/proxy"
   when: git.changed
 
 - name: build snowflake
   command: go build
   args:
-    chdir: "{{ snowflake_path }}/proxy-go"
+    chdir: "{{ snowflake_path }}/proxy"
   when: git.changed
 
 - name: copy snowflake
   copy:
-    src: "{{ snowflake_path }}/proxy-go/proxy-go"
+    src: "{{ snowflake_path }}/proxy/proxy"
     dest: /usr/local/bin/snowflake
     remote_src: yes
     mode: 0755
