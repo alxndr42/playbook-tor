@@ -1,9 +1,17 @@
+# unbound settings
 unbound_num_threads: 2
 unbound_cache_slabs: 2
 unbound_msg_cache: 256m
 unbound_rrset_cache: 512m
+unbound_tcp_keepalive: 0
+unbound_tls_interfaces:
+  - "0.0.0.0"
+  - "::0"
+unbound_access_control:
+  - "0.0.0.0/0 allow"
+  - "::0/0 allow"
 # unbound exporter settings
 unbound_etc: /etc/unbound
 unbound_exporter_repo: https://github.com/kumina/unbound_exporter.git
-unbound_exporter_commit: 1739a339d3404a4164a5664dc38e328108c6a2a6
+unbound_exporter_commit: c5af67df1c4e8466ced5b14b8c331c0add01878c
 unbound_exporter_path: /opt/unbound_exporter

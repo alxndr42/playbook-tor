@@ -19,5 +19,12 @@
     dest: /etc/unbound/unbound.conf.d/
   notify: restart unbound
 
+- name: template dns-over-tls.conf
+  template:
+    src: dns-over-tls.conf
+    dest: /etc/unbound/unbound.conf.d/
+  notify: restart unbound
+  when: unbound_tls_service_crt is defined
+
 - include: install-exporter.yml
   when: unbound_exporter_address is defined
