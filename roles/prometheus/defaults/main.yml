@@ -1,6 +1,6 @@
 ---
-node_exporter_url: "https://github.com/prometheus/node_exporter/releases/download/v1.0.1/node_exporter-1.0.1.linux-amd64.tar.gz"
-node_exporter_sha256: "3369b76cd2b0ba678b6d618deab320e565c3d93ccb5c2a0d5db51a53857768ae"
+node_exporter_url: "https://github.com/prometheus/node_exporter/releases/download/v1.1.1/node_exporter-1.1.1.linux-amd64.tar.gz"
+node_exporter_sha256: "9e42030befe27a473f288b6c4d003b76573a70836b50d1abff26d0de4cf42860"
 node_exporter_path: /opt/node_exporter
 node_exporter_address: "localhost:9100"
 node_exporter_options: []
