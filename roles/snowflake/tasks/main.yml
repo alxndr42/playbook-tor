@@ -1,7 +1,7 @@
 ---
 - name: install required packages
   apt:
-    name: golang
+    name: "{{ snowflake_required_packages }}"
     cache_valid_time: 86400
 
 - name: clone snowflake
