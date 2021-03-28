@@ -1,10 +1,10 @@
 ---
-node_exporter_url: "https://github.com/prometheus/node_exporter/releases/download/v1.1.1/node_exporter-1.1.1.linux-amd64.tar.gz"
-node_exporter_sha256: "9e42030befe27a473f288b6c4d003b76573a70836b50d1abff26d0de4cf42860"
+node_exporter_url: https://github.com/prometheus/node_exporter/releases/download/v1.1.2/node_exporter-1.1.2.linux-amd64.tar.gz
+node_exporter_sha256: "8c1f6a317457a658e0ae68ad710f6b4098db2cad10204649b51e3c043aa3e70d"
 node_exporter_path: /opt/node_exporter
 node_exporter_address: "localhost:9100"
 node_exporter_options: []
-tor_exporter_url: "https://github.com/atx/prometheus-tor_exporter/releases/download/v0.4/prometheus-tor-exporter_0.4_all.deb"
+tor_exporter_url: https://github.com/atx/prometheus-tor_exporter/releases/download/v0.4/prometheus-tor-exporter_0.4_all.deb
 tor_exporter_sha256: "18ff114b31dd26262872462f09ba12e81d33c1271468f56fe565fbe32a18f10e"
 tor_exporter_instances:
   - name: default
