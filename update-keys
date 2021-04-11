@@ -16,11 +16,11 @@ certs=$(find "$BASE" -name ed25519_signing_cert -mtime +14)
 if [ -n "$certs" ]; then
   echo "##### Updating keys"
   for cert in $certs; do
-    datadir=$(dirname $(dirname $cert))
+    datadir=$(dirname "$(dirname "$cert")")
     echo "### Updating $datadir"
     tor --datadirectory "$datadir" --signingkeylifetime "35 days" --keygen
   done
 fi
 
 echo "##### Copying keys"
-ansible-playbook site.yml -t copy-offline-keys $*
+ansible-playbook site.yml -t copy-offline-keys "$@"
