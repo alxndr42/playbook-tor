@@ -10,8 +10,9 @@ ExecStart={{ node_exporter_path }}/node_exporter \
     {{ o }} \
 {% endfor %}
     --web.listen-address="{{ node_exporter_address }}"
-Restart=always
-RestartSec=10
+User={{ node_exporter_user }}
+Restart=on-failure
+RestartSec=30
 
 [Install]
 WantedBy=multi-user.target
