@@ -6,7 +6,7 @@
 
 - name: clone exporter
   git:
-    repo: "https://github.com/kumina/unbound_exporter.git"
+    repo: https://github.com/kumina/unbound_exporter.git
     dest: "{{ unbound_exporter_path }}"
     version: "{{ unbound_exporter_commit }}"
   register: git
@@ -26,12 +26,12 @@
 
 - name: template service
   template:
-    src: prometheus-unbound-exporter.service
-    dest: /lib/systemd/system/
+    src: unbound_exporter.service
+    dest: /etc/systemd/system/
   notify: restart exporter
 
 - name: enable service
   systemd:
-    name: prometheus-unbound-exporter
+    name: unbound_exporter
     enabled: yes
     daemon_reload: yes

@@ -33,32 +33,25 @@ To use it in Tor, add this to the host configuration:
     tor_nameservers: ["127.0.0.1"]
 
 If the variable `unbound_exporter_address` is set (i.e. `localhost:9102`), a
-Prometheus Unbound exporter is installed.
+Prometheus [unbound_exporter][] is installed.
+
+[unbound]: https://nlnetlabs.nl/documentation/unbound/
+[unbound_exporter]: https://github.com/kumina/unbound_exporter
 
 ## Prometheus
 
-Hosts in the group `tor_prometheus` are configured with a [node_exporter][] on
-`localhost:9100` and a [tor_exporter][] on `localhost:9101`.
+Hosts in the group `tor_exporter` are configured with a [tor_exporter][] on
+`localhost:9101`.
 
-To expose them as a hidden service, add this to the host configuration:
-
-    tor_default_hidden_services:
-      - name: prometheus
-        ports: [9100, 9101]
-
-See the [tor](https://github.com/7adietri/ansible-tor) role for information on
-client authorization.
+[tor_exporter]: https://github.com/atx/prometheus-tor_exporter
 
 ## Snowflake Proxy
 
 Hosts in the group `tor_snowflake` are configured as [Snowflake][] proxies,
 using the Go binary.
 
+[snowflake]: https://snowflake.torproject.org/
+
 ## License
 
 GPLv3
-
-[node_exporter]: https://github.com/prometheus/node_exporter
-[snowflake]: https://snowflake.torproject.org/
-[tor_exporter]: https://github.com/atx/prometheus-tor_exporter
-[unbound]: https://nlnetlabs.nl/documentation/unbound/

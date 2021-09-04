@@ -1,0 +1,7 @@
+---
+tor_exporter_url: https://github.com/atx/prometheus-tor_exporter/releases/download/v0.4/prometheus-tor-exporter_0.4_all.deb
+tor_exporter_sha256: "18ff114b31dd26262872462f09ba12e81d33c1271468f56fe565fbe32a18f10e"
+tor_exporter_instances:
+  - name: default
+    control_socket: /var/run/tor/control
+    user: debian-tor

@@ -9,8 +9,8 @@ ExecStart={{ unbound_exporter_path }}/unbound_exporter \
     -unbound.cert {{ unbound_etc }}/unbound_control.pem \
     -unbound.key {{ unbound_etc }}/unbound_control.key \
     -web.listen-address {{ unbound_exporter_address }}
-Restart=always
-RestartSec=10
+Restart=on-failure
+RestartSec=30
 
 [Install]
 WantedBy=multi-user.target

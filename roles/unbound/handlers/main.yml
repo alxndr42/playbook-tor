@@ -6,5 +6,5 @@
 
 - name: restart exporter
   service:
-    name: prometheus-unbound-exporter
+    name: unbound_exporter
     state: restarted

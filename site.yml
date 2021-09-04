@@ -14,10 +14,10 @@
     - role: tor
       tags: tor
 
-- hosts: tor_prometheus
+- hosts: tor_exporter
   roles:
-    - role: prometheus
-      tags: prometheus
+    - role: tor_exporter
+      tags: tor_exporter
 
 - hosts: tor_snowflake
   roles:

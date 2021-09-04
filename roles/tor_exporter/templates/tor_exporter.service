@@ -1,5 +1,5 @@
 [Unit]
-Description=Prometheus exporter for Tor (instance {{ item.name }})
+Description=Prometheus tor_exporter (instance {{ item.name }})
 Requires=tor.service
 
 [Service]
