@@ -26,7 +26,7 @@ A minimal set of variables for a middle relay:
 
 ## Unbound
 
-Hosts in the group `tor_unbound` are configured with a basic [Unbound][] setup.
+Hosts in the group `unbound` are configured with a basic [Unbound][] setup.
 
 To use it in Tor, add this to the host configuration:
 
