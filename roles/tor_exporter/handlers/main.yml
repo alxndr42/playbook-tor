@@ -1,0 +1,6 @@
+---
+- name: restart tor_exporter
+  service:
+    name: tor_exporter_{{ item.name }}
+    state: restarted
+  loop: "{{ tor_exporter_instances }}"

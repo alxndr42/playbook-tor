@@ -22,6 +22,7 @@
     src: tor_exporter.service
     dest: /etc/systemd/system/tor_exporter_{{ item.name }}.service
   loop: "{{ tor_exporter_instances }}"
+  notify: restart tor_exporter
 
 - name: enable services
   systemd:

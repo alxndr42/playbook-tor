@@ -1,16 +1,19 @@
 [Unit]
 Description=Prometheus tor_exporter (instance {{ item.name }})
-Requires=tor.service
+Wants=tor@{{ item.name }}.service
+After=tor@{{ item.name }}.service
+PartOf=tor@{{ item.name }}.service
 
 [Service]
 {% if item.control_socket is defined %}
+ExecStartPre=test -S {{ item.control_socket }}
 ExecStart=/usr/bin/prometheus-tor-exporter.py -b {{ item.bind_addr|default("localhost") }} -p {{ item.bind_port|default(9101) }} -m unix -s {{ item.control_socket }}
 {% else %}
 ExecStart=/usr/bin/prometheus-tor-exporter.py -b {{ item.bind_addr|default("localhost") }} -p {{ item.bind_port|default(9101) }} -a {{ item.control_addr|default("localhost") }} -c {{ item.control_port|default(9051) }}
 {% endif %}
 User={{ item.user }}
-Restart=always
-RestartSec=10
+Restart=on-failure
+RestartSec=30
 
 [Install]
 WantedBy=multi-user.target
