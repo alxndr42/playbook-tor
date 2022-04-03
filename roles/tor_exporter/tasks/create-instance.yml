@@ -1,0 +1,26 @@
+---
+- name: check for service
+  local_action:
+    module: stat
+    path: /etc/systemd/system/tor_exporter_{{ item.name }}.service
+  become: no
+  register: service
+
+- name: template service
+  template:
+    src: tor_exporter.service
+    dest: /etc/systemd/system/tor_exporter_{{ item.name }}.service
+  register: config
+
+- name: enable service
+  systemd:
+    name: tor_exporter_{{ item.name }}
+    state: started
+    enabled: yes
+    daemon_reload: yes
+
+- name: restart service
+  systemd:
+    name: tor_exporter_{{ item.name }}
+    state: restarted
+  when: service.stat.exists and config.changed

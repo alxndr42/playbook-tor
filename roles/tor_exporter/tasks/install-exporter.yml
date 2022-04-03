@@ -1,0 +1,18 @@
+---
+- name: download tor_exporter
+  get_url:
+    url: "{{ tor_exporter_url }}"
+    dest: /opt/.tor_exporter.deb
+    checksum: sha256:{{ tor_exporter_sha256 }}
+  register: tor_exporter
+
+- name: install tor_exporter
+  apt:
+    deb: /opt/.tor_exporter.deb
+  when: tor_exporter.changed
+
+- name: disable default service
+  systemd:
+    name: prometheus-tor-exporter
+    state: stopped
+    enabled: no

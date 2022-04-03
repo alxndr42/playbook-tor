@@ -1,33 +1,24 @@
 ---
-- name: download tor_exporter
-  get_url:
-    url: "{{ tor_exporter_url }}"
-    dest: /opt/.tor_exporter.deb
-    checksum: sha256:{{ tor_exporter_sha256 }}
-  register: tor_exporter
+- name: install exporter
+  include: install-exporter.yml
 
-- name: install tor_exporter
-  apt:
-    deb: /opt/.tor_exporter.deb
-  when: tor_exporter.changed
+- name: create bridge instances
+  include: create-instance.yml
+  loop: "{{ tor_exporter_bridge }}"
+  loop_control:
+    loop_var: item
+  tags: [bridge-relays]
 
-- name: disable default service
-  systemd:
-    name: prometheus-tor-exporter
-    state: stopped
-    enabled: no
+- name: create middle instances
+  include: create-instance.yml
+  loop: "{{ tor_exporter_middle }}"
+  loop_control:
+    loop_var: item
+  tags: [middle-relays]
 
-- name: template services
-  template:
-    src: tor_exporter.service
-    dest: /etc/systemd/system/tor_exporter_{{ item.name }}.service
-  loop: "{{ tor_exporter_instances }}"
-  notify: restart tor_exporter
-
-- name: enable services
-  systemd:
-    name: tor_exporter_{{ item.name }}
-    state: started
-    enabled: yes
-    daemon_reload: yes
-  loop: "{{ tor_exporter_instances }}"
+- name: create exit instances
+  include: create-instance.yml
+  loop: "{{ tor_exporter_exit }}"
+  loop_control:
+    loop_var: item
+  tags: [exit-relays]
