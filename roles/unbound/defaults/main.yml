@@ -6,6 +6,7 @@ unbound_rrset_cache: 512m
 unbound_socket_buffer: 4m
 unbound_outgoing_range: 450
 unbound_num_queries: 225
+unbound_other: []
 unbound_tcp_keepalive: 0
 unbound_tls_interfaces:
   - "0.0.0.0"
