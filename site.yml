@@ -23,3 +23,8 @@
   roles:
     - role: snowflake
       tags: snowflake
+
+- hosts: nginx
+  roles:
+    - role: nginx
+      tags: nginx

@@ -5,6 +5,7 @@ Ansible playbook for managing Tor relays on Debian-based systems.
 Please see the role READMEs for requirements and variables:
 
 - [basics](https://github.com/alxndr42/ansible-basics)
+- [nginx](https://github.com/alxndr42/ansible-nginx)
 - [tor](https://github.com/alxndr42/ansible-tor)
 
 The script [update-keys](update-keys) can be used to update and copy the
