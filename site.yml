@@ -16,8 +16,8 @@
 
 - hosts: tor_exporter
   roles:
-    - role: tor_exporter
-      tags: tor_exporter
+    - role: tor-exporter
+      tags: tor-exporter
 
 - hosts: tor_snowflake
   roles:
