@@ -2,14 +2,10 @@
 
 Ansible playbook for managing Tor relays on Debian-based systems.
 
-Please see the role READMEs for requirements and variables:
-
-- [basics](https://github.com/alxndr42/ansible-basics)
-- [nginx](https://github.com/alxndr42/ansible-nginx)
-- [tor](https://github.com/alxndr42/ansible-tor)
-
 The script [update-keys](update-keys) can be used to update and copy the
 offline keys.
+
+Please see the individual roles for more information and defaults.
 
 ## Inventory Example
 
@@ -28,9 +24,20 @@ tor_instances_middle:
       - "[abcd::1:2:3:4]:443"
 ```
 
+## Exit Notice
+
+Hosts in the group `tor_relays` that have `tor_instances_exit` are configured
+with nginx and a `tor-exit-notice` site for all exit `outbound_addresses`,
+unless `nginx` and `tor_exit_notice` are set to `false`.
+
+Copyright for the [sample exit notice][] is held by The Tor Project, Inc.
+
+[sample exit notice]: roles/tor-exit-notice/files/tor-exit-notice/index.html
+
 ## Unbound
 
-Hosts in the group `unbound` are configured with a basic [Unbound][] setup.
+Hosts in the group `tor_relays` that have `tor_instances_exit` are configured
+with [Unbound][], unless `unbound` is set to `false`.
 
 To use it in Tor, add this to the host configuration:
 
@@ -38,16 +45,19 @@ To use it in Tor, add this to the host configuration:
 tor_nameservers: ["127.0.0.1"]
 ```
 
-If the variable `unbound_exporter_address` is set to `address:port`, a
-Prometheus [unbound_exporter][] is installed.
+If `unbound_exporter_address` is defined (i.e. `address:port`), a Prometheus
+[unbound_exporter][] is installed.
 
 [unbound]: https://unbound.docs.nlnetlabs.nl/
 [unbound_exporter]: https://github.com/letsencrypt/unbound_exporter
 
-## Prometheus
+## Prometheus Tor Exporter
 
-Hosts in the groups `tor_exporter_bridge`, `tor_exporter_middle` and
-`tor_exporter_exit` are configured with a [tor_exporter][]:
+Hosts in the group `tor_relays` are configured with nginx and [tor_exporter][],
+unless `nginx` and `tor_exporter` are set to `false`.
+
+The variables `tor_exporter_bridge`, `tor_exporter_middle` and
+`tor_exporter_exit` should contain the configuration for exporter instances:
 
 ```yaml
 tor_exporter_middle:

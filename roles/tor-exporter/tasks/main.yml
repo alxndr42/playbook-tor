@@ -1,6 +1,7 @@
 ---
 - name: install exporter
   include: install-exporter.yml
+  when: tor_exporter_bridge or tor_exporter_middle or tor_exporter_exit
 
 - name: create bridge instances
   include: create-instance.yml

@@ -1,0 +1,7 @@
+server {
+    server_name {{ tor_exit_notice_server_names | join(' ') }} {{ addresses | join(' ') }};
+    listen *:80;
+    listen [::]:80;
+
+    root /var/www/tor-exit-notice;
+}

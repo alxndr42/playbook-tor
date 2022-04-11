@@ -1,4 +1,5 @@
 # unbound settings
+unbound: true
 unbound_num_threads: 2
 unbound_cache_slabs: 2
 unbound_msg_cache: 256m

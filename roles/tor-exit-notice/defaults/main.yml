@@ -1,0 +1,4 @@
+---
+tor_exit_notice: true
+tor_exit_notice_folder: tor-exit-notice
+tor_exit_notice_server_names: []

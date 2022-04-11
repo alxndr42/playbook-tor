@@ -1,0 +1,21 @@
+---
+- name: copy exit notice files
+  copy:
+    src: "{{ tor_exit_notice_folder }}/"
+    dest: /var/www/tor-exit-notice/
+  notify: reload nginx
+
+- name: template nginx site
+  template:
+    src: tor-exit-notice
+    dest: /etc/nginx/sites-available/
+  vars:
+    addresses: "{{ tor_instances_exit | map(attribute='outbound_addresses') | flatten | sort | unique }}"
+  notify: reload nginx
+
+- name: enable nginx site
+  file:
+    src: /etc/nginx/sites-available/tor-exit-notice
+    dest: /etc/nginx/sites-enabled/tor-exit-notice
+    state: link
+  notify: reload nginx
