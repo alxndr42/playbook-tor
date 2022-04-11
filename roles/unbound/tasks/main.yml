@@ -26,5 +26,5 @@
   notify: restart unbound
   when: unbound_tls_service_crt is defined
 
-- include: install-exporter.yml
+- include_tasks: install-exporter.yml
   when: unbound_exporter_address is defined

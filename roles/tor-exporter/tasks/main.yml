@@ -1,24 +1,24 @@
 ---
 - name: install exporter
-  include: install-exporter.yml
+  include_tasks: install-exporter.yml
   when: tor_exporter_bridge or tor_exporter_middle or tor_exporter_exit
 
 - name: create bridge instances
-  include: create-instance.yml
+  include_tasks: create-instance.yml
   loop: "{{ tor_exporter_bridge }}"
   loop_control:
     loop_var: item
   tags: [bridge-instances, exporter-instances]
 
 - name: create middle instances
-  include: create-instance.yml
+  include_tasks: create-instance.yml
   loop: "{{ tor_exporter_middle }}"
   loop_control:
     loop_var: item
   tags: [middle-instances, exporter-instances]
 
 - name: create exit instances
-  include: create-instance.yml
+  include_tasks: create-instance.yml
   loop: "{{ tor_exporter_exit }}"
   loop_control:
     loop_var: item
