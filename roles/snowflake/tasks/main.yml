@@ -11,12 +11,6 @@
     version: "{{ snowflake_commit }}"
   register: git
 
-- name: get dependencies
-  command: go get -d
-  args:
-    chdir: "{{ snowflake_path }}/proxy"
-  when: git.changed
-
 - name: build snowflake
   command: go build
   args:
@@ -35,7 +29,7 @@
 - name: template snowflake.service
   template:
     src: snowflake.service
-    dest: /lib/systemd/system
+    dest: /etc/systemd/system
   notify: restart snowflake
 
 - name: enable snowflake service
