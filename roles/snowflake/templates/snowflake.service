@@ -1,14 +1,15 @@
 [Unit]
 Description=Snowflake Proxy for Tor
-After=network.target
+Wants=network-online.target
+After=network-online.target
 
 [Service]
 User=nobody
 Group=nogroup
 WorkingDirectory=/tmp
 ExecStart=/usr/local/bin/snowflake
-Restart=always
-RestartSec=60
+Restart=on-failure
+RestartSec=30
 
 [Install]
 WantedBy=multi-user.target
