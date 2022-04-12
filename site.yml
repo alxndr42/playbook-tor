@@ -17,15 +17,15 @@
 
 - hosts: tor_relays
   roles:
-    - role: tor-exporter
-      tags: tor-exporter
-      when: tor_exporter
     - role: nginx
       tags: nginx
-      when: nginx and (tor_exporter or tor_exit_notice and tor_instances_exit)
+      when: tor_exit_notice and tor_instances_exit
     - role: tor-exit-notice
       tags: tor-exit-notice
       when: tor_exit_notice and tor_instances_exit
+    - role: tor-exporter
+      tags: tor-exporter
+      when: tor_exporter
 
 - hosts: tor_snowflake
   roles:

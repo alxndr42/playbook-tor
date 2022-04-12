@@ -24,16 +24,6 @@ tor_instances_middle:
       - "[abcd::1:2:3:4]:443"
 ```
 
-## Exit Notice
-
-Hosts in the group `tor_relays` that have `tor_instances_exit` are configured
-with nginx and a `tor-exit-notice` site for all exit `outbound_addresses`,
-unless `nginx` and `tor_exit_notice` are set to `false`.
-
-Copyright for the [sample exit notice][] is held by The Tor Project, Inc.
-
-[sample exit notice]: roles/tor-exit-notice/files/tor-exit-notice/index.html
-
 ## Unbound
 
 Hosts in the group `tor_relays` that have `tor_instances_exit` are configured
@@ -51,10 +41,20 @@ If `unbound_exporter_address` is defined (i.e. `address:port`), a Prometheus
 [unbound]: https://unbound.docs.nlnetlabs.nl/
 [unbound_exporter]: https://github.com/letsencrypt/unbound_exporter
 
-## Prometheus Tor Exporter
+## Exit Notice
 
-Hosts in the group `tor_relays` are configured with nginx and [tor_exporter][],
-unless `nginx` and `tor_exporter` are set to `false`.
+Hosts in the group `tor_relays` that have `tor_instances_exit` are configured
+with nginx and a `tor-exit-notice` site for all exit `outbound_addresses`,
+unless `tor_exit_notice` is set to `false`.
+
+Copyright for the [sample exit notice][] is held by The Tor Project, Inc.
+
+[sample exit notice]: roles/tor-exit-notice/files/tor-exit-notice/index.html
+
+## Tor Exporter
+
+Hosts in the group `tor_relays` are configured with a Prometheus
+[tor_exporter][], unless `tor_exporter` is set to `false`.
 
 The variables `tor_exporter_bridge`, `tor_exporter_middle` and
 `tor_exporter_exit` should contain the configuration for exporter instances:
