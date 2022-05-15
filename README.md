@@ -5,7 +5,27 @@ Ansible playbook for managing Tor relays on Debian-based systems.
 The script [update-keys](update-keys) can be used to update and copy the
 offline keys.
 
-Please see the individual roles for more information and defaults.
+Please see the individual roles for more information and default values.
+
+External roles:
+
+- [basics](https://github.com/alxndr42/ansible-basics)
+- [nginx](https://github.com/alxndr42/ansible-nginx)
+- [tor](https://github.com/alxndr42/ansible-tor)
+
+## Requirements
+
+- Debian-based system with systemd
+- Offline keys as described in the `tor` role
+- Dependencies installed
+
+```bash
+# Install dependencies via Ansible Galaxy
+ansible-galaxy install -r requirements-galaxy.yml
+
+# Install dependencies via GitHub
+ansible-galaxy install -r requirements-github.yml
+```
 
 ## Inventory Example
 
@@ -78,4 +98,4 @@ using the Go binary.
 
 ## License
 
-GPLv3
+GNU General Public License v3 or later (GPLv3+)

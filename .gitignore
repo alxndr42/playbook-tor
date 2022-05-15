@@ -1,2 +1,5 @@
 # Directories
 tmp/
+
+# Files
+ansible.cfg

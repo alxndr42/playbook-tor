@@ -3,6 +3,7 @@
   roles:
     - role: basics
       tags: basics
+      when: basics
 
 - hosts: tor_relays
   roles:

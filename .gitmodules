@@ -1,9 +1,0 @@
-[submodule "roles/tor"]
-	path = roles/tor
-	url = https://github.com/alxndr42/ansible-tor
-[submodule "roles/basics"]
-	path = roles/basics
-	url = https://github.com/alxndr42/ansible-basics
-[submodule "roles/nginx"]
-	path = roles/nginx
-	url = https://github.com/alxndr42/ansible-nginx.git
