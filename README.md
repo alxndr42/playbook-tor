@@ -7,10 +7,9 @@ offline keys.
 
 Please see the individual roles for more information and default values.
 
-External roles:
+External collections/roles:
 
-- [basics](https://github.com/alxndr42/ansible-basics)
-- [nginx](https://github.com/alxndr42/ansible-nginx)
+- [commons](https://github.com/alxndr42/ansible-commons)
 - [tor](https://github.com/alxndr42/ansible-tor)
 
 ## Requirements

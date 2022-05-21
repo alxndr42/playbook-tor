@@ -1,7 +1,7 @@
 ---
 - hosts: all
   roles:
-    - role: basics
+    - role: alxndr42.commons.basics
       tags: basics
       when: basics
 
@@ -18,7 +18,7 @@
 
 - hosts: tor_relays
   roles:
-    - role: nginx
+    - role: alxndr42.commons.nginx
       tags: nginx
       when: tor_exit_notice and tor_instances_exit
     - role: tor-exit-notice

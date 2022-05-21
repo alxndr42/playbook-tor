@@ -1,10 +1,10 @@
 ---
-- src: https://github.com/alxndr42/ansible-basics.git
-  name: basics
-  version: v1.11.0
-- src: https://github.com/alxndr42/ansible-nginx.git
-  name: nginx
-  version: v1.4.0
-- src: https://github.com/alxndr42/ansible-tor.git
-  name: tor
-  version: v2.7.0
+collections:
+  - name: https://github.com/alxndr42/ansible-commons.git
+    type: git
+    version: v1.0.0
+
+roles:
+  - src: https://github.com/alxndr42/ansible-tor.git
+    name: tor
+    version: v2.7.0

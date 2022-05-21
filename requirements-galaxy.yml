@@ -1,10 +1,9 @@
 ---
-- src: alxndr42.basics
-  name: basics
-  version: v1.11.0
-- src: alxndr42.nginx
-  name: nginx
-  version: v1.4.0
-- src: alxndr42.tor
-  name: tor
-  version: v2.7.0
+collections:
+  - name: alxndr42.commons
+    version: 1.0.0
+
+roles:
+  - src: alxndr42.tor
+    name: tor
+    version: v2.7.0
