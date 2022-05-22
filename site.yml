@@ -9,7 +9,7 @@
   roles:
     - role: unbound
       tags: unbound
-      when: unbound and tor_instances_exit
+      when: unbound and tor_instances_exit is defined
 
 - hosts: all
   roles:
@@ -20,10 +20,10 @@
   roles:
     - role: alxndr42.commons.nginx
       tags: nginx
-      when: tor_exit_notice and tor_instances_exit
+      when: tor_exit_notice and tor_instances_exit is defined
     - role: tor-exit-notice
       tags: tor-exit-notice
-      when: tor_exit_notice and tor_instances_exit
+      when: tor_exit_notice and tor_instances_exit is defined
     - role: tor-exporter
       tags: tor-exporter
       when: tor_exporter
