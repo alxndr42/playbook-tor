@@ -11,6 +11,7 @@ External collections/roles:
 
 - [commons](https://github.com/alxndr42/ansible-commons)
 - [tor](https://github.com/alxndr42/ansible-tor)
+- [unbound](https://github.com/alxndr42/ansible-unbound)
 
 ## Requirements
 
