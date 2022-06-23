@@ -12,7 +12,7 @@ fi
 BASE="$1"
 shift
 
-MTIME="${MTIME:-14}"
+MTIME="${MTIME:-+14}"
 TTL="${TTL:-35 days}"
 
 certs=$(find "$BASE" -name ed25519_signing_cert -mtime "$MTIME")
