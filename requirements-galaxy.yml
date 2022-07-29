@@ -6,7 +6,7 @@ collections:
 roles:
   - src: alxndr42.tor
     name: tor
-    version: v2.7.1
+    version: v2.8.0
   - src: alxndr42.unbound
     name: unbound
     version: v1.0.0
