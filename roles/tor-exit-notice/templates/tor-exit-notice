@@ -1,5 +1,5 @@
 server {
-    server_name {{ tor_exit_notice_server_names | join(' ') }} {{ addresses | join(' ') }};
+    server_name {{ (tor_exit_notice_server_names + addresses) | join(' ') }};
     listen *:80;
     listen [::]:80;
 
