@@ -71,10 +71,10 @@ Copyright for the [sample exit notice][] is held by The Tor Project, Inc.
 
 [sample exit notice]: roles/tor-exit-notice/files/tor-exit-notice/index.html
 
-## Tor Exporter
+## Tor Exporter (Deprecated)
 
 Hosts in the group `tor_relays` are configured with a Prometheus
-[tor_exporter][], unless `tor_exporter` is set to `false`.
+[tor_exporter][], if `tor_exporter` is set to `true`.
 
 The variables `tor_exporter_bridge`, `tor_exporter_middle` and
 `tor_exporter_exit` should contain the configuration for exporter instances:
