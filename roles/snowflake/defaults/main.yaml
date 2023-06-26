@@ -1,4 +1,5 @@
 ---
+go_command: go
 snowflake_commit: main
 snowflake_path: /opt/snowflake
 snowflake_required_packages: [golang]
