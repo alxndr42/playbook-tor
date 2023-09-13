@@ -17,12 +17,6 @@
     chdir: "{{ snowflake_path }}/proxy"
   when: git.changed
 
-- name: stop snowflake service
-  systemd:
-    name: snowflake
-    state: stopped
-  when: git.changed
-
 - name: copy snowflake
   copy:
     src: "{{ snowflake_path }}/proxy/proxy"
