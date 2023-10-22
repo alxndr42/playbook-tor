@@ -20,9 +20,6 @@ External collections/roles:
 - Dependencies installed
 
 ```bash
-# Install dependencies via Ansible Galaxy
-ansible-galaxy install -r requirements-galaxy.yml
-
 # Install dependencies via GitHub
 ansible-galaxy install -r requirements-github.yml
 ```
