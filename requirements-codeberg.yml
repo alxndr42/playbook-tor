@@ -1,0 +1,13 @@
+---
+collections:
+  - name: https://codeberg.org/alxndr42/ansible-commons.git
+    type: git
+    version: v1.3.0
+
+roles:
+  - src: https://codeberg.org/alxndr42/ansible-tor.git
+    name: tor
+    version: v2.12.0
+  - src: https://codeberg.org/alxndr42/ansible-unbound.git
+    name: unbound
+    version: v1.1.0

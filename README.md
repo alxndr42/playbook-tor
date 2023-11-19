@@ -9,9 +9,9 @@ Please see the individual roles for more information and default values.
 
 External collections/roles:
 
-- [commons](https://github.com/alxndr42/ansible-commons)
-- [tor](https://github.com/alxndr42/ansible-tor)
-- [unbound](https://github.com/alxndr42/ansible-unbound)
+- [commons](https://codeberg.org/alxndr42/ansible-commons)
+- [tor](https://codeberg.org/alxndr42/ansible-tor)
+- [unbound](https://codeberg.org/alxndr42/ansible-unbound)
 
 ## Requirements
 
@@ -20,6 +20,9 @@ External collections/roles:
 - Dependencies installed
 
 ```bash
+# Install dependencies via Codeberg
+ansible-galaxy install -r requirements-codeberg.yml
+
 # Install dependencies via GitHub
 ansible-galaxy install -r requirements-github.yml
 ```
