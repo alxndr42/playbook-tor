@@ -1,24 +1,24 @@
 ---
 - name: install required packages
-  apt:
+  ansible.builtin.apt:
     name: "{{ snowflake_required_packages }}"
     cache_valid_time: 86400
 
 - name: clone snowflake
-  git:
-    repo: "https://git.torproject.org/pluggable-transports/snowflake.git"
+  ansible.builtin.git:
+    repo: "https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake.git"
     dest: "{{ snowflake_path }}"
     version: "{{ snowflake_commit }}"
   register: git
 
 - name: build snowflake
-  command: "{{ go_command }} build"
+  ansible.builtin.command: "{{ snowflake_build_command }}"
   args:
     chdir: "{{ snowflake_path }}/proxy"
   when: git.changed
 
 - name: copy snowflake
-  copy:
+  ansible.builtin.copy:
     src: "{{ snowflake_path }}/proxy/proxy"
     dest: /usr/local/bin/snowflake
     remote_src: yes
@@ -27,13 +27,13 @@
   notify: restart snowflake
 
 - name: template snowflake.service
-  template:
+  ansible.builtin.template:
     src: snowflake.service
     dest: /etc/systemd/system
   notify: restart snowflake
 
 - name: enable snowflake service
-  systemd:
+  ansible.builtin.systemd:
     name: snowflake
     enabled: yes
     daemon_reload: yes

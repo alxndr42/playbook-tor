@@ -30,5 +30,8 @@
 
 - hosts: tor_snowflake
   roles:
+    - role: alxndr42.commons.golang
+      tags: golang
+      when: golang
     - role: snowflake
       tags: snowflake

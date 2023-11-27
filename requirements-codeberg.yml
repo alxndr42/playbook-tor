@@ -2,7 +2,7 @@
 collections:
   - name: https://codeberg.org/alxndr42/ansible-commons.git
     type: git
-    version: v1.3.0
+    version: v1.4.0
 
 roles:
   - src: git+https://codeberg.org/alxndr42/ansible-tor.git
