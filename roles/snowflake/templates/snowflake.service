@@ -7,7 +7,11 @@ After=network-online.target
 User=nobody
 Group=nogroup
 WorkingDirectory=/tmp
-ExecStart=/usr/local/bin/snowflake
+ExecStart=/usr/local/bin/snowflake \
+{% for option in snowflake_options %}
+    {{ option }} \
+{% endfor %}
+    -summary-interval {{ snowflake_summary_interval }}
 Restart=on-failure
 RestartSec=30
 

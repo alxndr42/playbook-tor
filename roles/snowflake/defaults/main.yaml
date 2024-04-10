@@ -3,3 +3,5 @@ snowflake_build_command: /usr/local/go/bin/go build
 snowflake_commit: main
 snowflake_path: /opt/snowflake
 snowflake_required_packages: []
+snowflake_options: []
+snowflake_summary_interval: "1h0m0s"
