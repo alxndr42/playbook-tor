@@ -2,7 +2,7 @@
 collections:
   - name: https://github.com/alxndr42/ansible-commons.git
     type: git
-    version: v1.5.0
+    version: v1.6.0
 
 roles:
   - src: git+https://github.com/alxndr42/ansible-tor.git
