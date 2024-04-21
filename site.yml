@@ -28,7 +28,7 @@
       tags: tor-exporter
       when: tor_exporter
 
-- hosts: tor_snowflake
+- hosts: tor_snowflakes
   roles:
     - role: alxndr42.commons.golang
       tags: golang
