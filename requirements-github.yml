@@ -7,7 +7,7 @@ collections:
 roles:
   - src: git+https://github.com/alxndr42/ansible-tor.git
     name: tor
-    version: v2.13.0
+    version: v2.14.0
   - src: git+https://github.com/alxndr42/ansible-unbound.git
     name: unbound
     version: v1.1.0
